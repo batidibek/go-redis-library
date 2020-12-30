@@ -1,7 +1,7 @@
 package redis
 
 import (
-	"bitbucket.org/fireflyon/go-library-template/pkg/cache"
+	"github.com/batidibek/go-redis-library/tree/main/pkg/cache"
 	"context"
 	rd "github.com/go-redis/redis/v8"
 	"time"
