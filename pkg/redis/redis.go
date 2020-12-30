@@ -2,7 +2,7 @@ package redis
 
 import (
 	"context"
-	"github.com/batidibek/go-redis-library/tree/main/pkg/cache"
+	"github.com/batidibek/go-redis-library/pkg/cache"
 	rd "github.com/go-redis/redis/v8"
 	"time"
 )
@@ -17,7 +17,7 @@ type redisConfig struct {
 type (
 	redisAdapter struct {
 		redisConfig
-		redisClient *Client
+		redisClient *rd.Client
 	}
 )
 
@@ -29,8 +29,8 @@ func NewRedisAdapter(addr string, db int) cache.Cache {
 }
 
 // New redis client
-func (ra *redisAdapter) createRedisClient() *Client {
-	ra.redisClient = NewClient(&Options{
+func (ra *redisAdapter) createRedisClient() *rd.Client {
+	ra.redisClient = rd.NewClient(&rd.Options{
 		Addr:     ra.redisConfig.address,
 		Password: "",
 		DB:       ra.redisConfig.db,
@@ -39,7 +39,7 @@ func (ra *redisAdapter) createRedisClient() *Client {
 }
 
 // get redis client
-func (ra *redisAdapter) getRedisClient() *Client {
+func (ra *redisAdapter) getRedisClient() *rd.Client {
 	if ra.redisClient != nil{
 		return ra.redisClient
 	}
