@@ -1,4 +1,4 @@
-module bitbucket.org/fireflyon/go-library-template
+module github.com/batidibek/go-redis-library
 
 go 1.15
 
